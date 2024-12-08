@@ -6,8 +6,8 @@ from discord.ext import commands
 from discord import app_commands
 
 DB_PATH = "powerdns_users.db"
-API_BASE_URL = "https://your-powerdns-admin.com/api"
-API_KEY = "your-api-key"
+API_BASE_URL = "http://api.thedev.ovh:8081/api/v1/"
+API_KEY = "OG9UZHhCZ1ZoV1hHSVFM"
 
 class PowerDNSBot(commands.Cog):
     def __init__(self, bot):
