@@ -1,13 +1,13 @@
 import discord
 import aiohttp
 import sqlite3
-
 from discord.ext import commands
 from discord import app_commands
 
 DB_PATH = "powerdns_users.db"
 API_BASE_URL = "http://api.thedev.ovh:8081/api/v1/"
 API_KEY = "OG9UZHhCZ1ZoV1hHSVFM"
+DISCORD_TOKEN = "YOUR_DISCORD_BOT_TOKEN_HERE"  # Replace with your bot token
 
 class PowerDNSBot(commands.Cog):
     def __init__(self, bot):
@@ -173,3 +173,15 @@ class PowerDNSBot(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(PowerDNSBot(bot))
+
+# Create the bot and run it
+intents = discord.Intents.default()  
+intents.messages = True
+intents.guilds = True
+bot = commands.Bot(command_prefix="/", intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"Bot is logged in as {bot.user}")
+
+bot.run(DISCORD_TOKEN)  # Running the bot with the provided token
